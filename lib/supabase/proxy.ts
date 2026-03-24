@@ -32,7 +32,7 @@ export async function updateSession(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // 未認証ユーザーがダッシュボードにアクセスしたらログインページへ
-  if (!user && pathname !== '/login') {
+  if (!user && pathname !== '/login' && pathname !== '/auth/callback') {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
